@@ -4,7 +4,7 @@ ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y curl language-pack-en locales
+RUN apt-get install -y build-essential curl language-pack-en locales
 RUN update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 
 RUN curl -O https://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && dpkg -i erlang-solutions_1.0_all.deb
