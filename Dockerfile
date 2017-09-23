@@ -22,6 +22,7 @@ RUN mix local.rebar --force
 
 ENV NVM_DIR=/usr/local/nvm
 ENV PROFILE=/etc/profile
+ENV NVM_NODE_VERSION=6.11.3
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
-RUN bash -c ". $NVM_DIR/nvm.sh && nvm install 6.11.3 && npm install npm@latest -g"
-ENV PATH=/usr/local/nvm/versions/node/v6.11.3/bin:${PATH}
+RUN bash -c ". $NVM_DIR/nvm.sh && nvm install $NVM_NODE_VERSION && npm install npm@latest -g"
+ENV PATH=/usr/local/nvm/versions/node/v$NVM_NODE_VERSION/bin:${PATH}
