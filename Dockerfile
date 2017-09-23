@@ -19,3 +19,7 @@ RUN apt-get install -y elixir=$APT_ELIXIR_VERSION
 
 RUN mix local.hex --force
 RUN mix local.rebar --force
+
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
+RUN npm install -g npm
