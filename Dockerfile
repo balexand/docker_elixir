@@ -20,9 +20,8 @@ RUN apt-get install -y elixir=$APT_ELIXIR_VERSION
 RUN mix local.hex --force
 RUN mix local.rebar --force
 
-ENV NVM_DIR=/usr/local/nvm
-ENV PROFILE=/etc/profile
-ENV NVM_NODE_VERSION=6.11.3
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
-RUN bash -c ". $NVM_DIR/nvm.sh && nvm install $NVM_NODE_VERSION && npm install npm@latest -g"
-ENV PATH=/usr/local/nvm/versions/node/v$NVM_NODE_VERSION/bin:${PATH}
+RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN apt-get install -y nodejs
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update && apt-get install -y yarn
