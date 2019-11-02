@@ -1,5 +1,7 @@
 FROM elixir:1.9.2
 
+RUN erl -eval '{ok, Version} = file:read_file(filename:join([code:root_dir(), "releases", erlang:system_info(otp_release), "OTP_VERSION"])), io:fwrite(Version), halt().' -noshell
+
 RUN mix local.hex --force
 RUN mix local.rebar --force
 
